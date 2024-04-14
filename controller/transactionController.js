@@ -171,3 +171,20 @@ exports.transferFunds = async (req, res) => {
     });
   }
 };
+
+exports.getTransactionDetails = async (req, res) => {
+  try {
+    const transaction = await Transaction.find({});
+
+    return res.status(200).json({
+      message: "account statement",
+      transaction,
+      success: true,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
